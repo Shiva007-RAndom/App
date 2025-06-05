@@ -1,0 +1,5 @@
+ i have used two retrievers: FAISS and BM25. FAISS is a vector-based retriever that enables efficient similarity search, which allows it to capture semantic relationships between queries and documents. BM25, on the other hand, is a sparse retriever which depends on term frequency principles, which excels in handling exact token matches and works well for keyword heavy queries. I chose this hybrid setup to use strengths of both dense and sparse retrieval. FAISS for semantic understanding and BM25 for precision with keywords.
+
+I have used a weighted reranker which combines the scores from both the documents. It assigns weights separately for documents retrieved by FAISS and BM25. The sum of the weighted scores is taken is as the final score and the top k documents with the highest scores are sent to generate response.
+
+Strength of this method is that it combines both the retrievers. It can cover a diverse range of queries. The weights are manually chosen and not trained which can be a limitation. 
